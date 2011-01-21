@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+body {
+  padding: 100px;
+}
 .super-switch-wrap {
   height: 22px;
   border: 1px solid black;
