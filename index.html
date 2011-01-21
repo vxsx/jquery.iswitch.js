@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>switch</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<script type="text/javascript">
+	/* super-switch */
+
+	$(function() {
+	    var s = $('.super-switch').css('display', 'none');
+
+	    $('.knot').draggable({
+	        containment: 'parent',
+	        axis: 'x',
+	        drag: function(event, ui) {
+    			$('.super-switch-wrap .label-wrap').css({'left': -40 + ui.position.left + 'px'});
+  			}
+	    })
+
+	})
+	
+	</script>
+	
+	
+	
+	<input type="checkbox" name="switch" class="super-switch" data-true="yes" data-false="no">
+	<div class="super-switch-wrap">
+	    <span class="knot"></span>
+	    <div class="label-wrap">
+	        <span class="label true">Yes</span>
+
+	        <span class="label false">No</span>
+	    </div>
+	</div>
+</body>
+</html>
