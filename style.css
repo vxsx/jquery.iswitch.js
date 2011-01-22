@@ -21,7 +21,7 @@ body {
   /*   outline: 1px solid red; */
 
   float: left;
-}
+} 
 .true, .false {
   display: inline-block;
   vertical-align: middle;
