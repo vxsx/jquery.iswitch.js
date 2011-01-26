@@ -36,7 +36,6 @@ body {
 }
 .true, .false {
   display: inline-block;
-  vertical-align: middle;
   padding: 0 10px;
   text-align: center;
   position: relative;
@@ -59,6 +58,7 @@ body {
   width: 30px;
   padding: 0;
   z-index: 999;
+  cursor: pointer;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;

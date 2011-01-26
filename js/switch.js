@@ -1,5 +1,7 @@
 $(function() {
     var s = $('.super-switch').css('display', 'none'),
+
+
 		w = $('.super-switch-wrap'),
 		$true =  $('.true', w),
 		$false =  $('.false', w),
@@ -20,17 +22,29 @@ $(function() {
 			'left': offset
 		})
 	
-	knob.click(function(){
-		$(this).animate({'left': ( parseInt($(this).css('left')) > 0 ) ? 0 : offset  })
-		$('.super-switch-wrap .label-wrap').animate({'left': ( parseInt($(this).css('left')) > 0 ) ?  - offset : 0 });
-	})
 	
     knob.draggable({
         containment: 'parent',
         axis: 'x',
         drag: function(event, ui) {
 			$('.super-switch-wrap .label-wrap').css({'left': - offset + ui.position.left + 'px'});
+		},
+		stop: function(event, ui) {
+//			console.log(ui)
+			if ( ui.position.left > ( (offset+30)/2 - 15 ) ) {
+				knob.animate({'left': offset }, 200);
+				$('.super-switch-wrap .label-wrap').animate({'left': 0}, 200);
+			} else {
+				knob.animate({'left': 0 }, 200);	
+				$('.super-switch-wrap .label-wrap').animate({'left': -offset}, 200);
+			}
 		}
     })
+	
+	knob.click(function(){
+		$(this).animate({'left': ( parseInt($(this).css('left')) > 0 ) ? 0 : offset  })
+		$('.super-switch-wrap .label-wrap').animate({'left': ( parseInt($(this).css('left')) > 0 ) ?  - offset : 0 });
+	})
+	
 
 })
