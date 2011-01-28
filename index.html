@@ -9,14 +9,12 @@
 	<script type="text/javascript" src="js/switch.js"></script>
 </head>
 <body>
-	<input type="checkbox" name="switch" class="super-switch" data-true="yes" data-false="no">
-	<div class="super-switch-wrap">
-	    <span class="knob"></span>
-	    <div class="label-wrap">
-	        <span class="label true">Yes</span>
-	        <span class="label false">NO</span>
-	    </div>
-	</div>
-
+	<input type="checkbox" name="switch" class="js-switch" data-true="black" data-false="white">
+	
+	<script type="text/javascript">
+		$('input').change(function() {
+			$('body').css({ 'background-color': this.checked ? 'black' : 'white' });
+		})
+	</script>
 </body>
 </html>
