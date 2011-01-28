@@ -1,6 +1,7 @@
 (function($){
-	//TODO: make it work with a customizable css, so all dimensions -> to variables
+	//TODO: make it work with a customizable css, so all dimensions -> to variables -- done
 	//		make all variables into one object and pass this object to a functions instead of passing too many variables
+	//		disabled state
     $.fn.switch = function(options) {
         var settings = $.extend({
            //
@@ -14,31 +15,29 @@
 					        '<span class="label true">'+$(this).data('true')+'</span>'+
 					        '<span class="label false">'+$(this).data('false')+'</span>'+
 					    '</div>'
-				);
-						
+					),
+					w = s.parent(),
+					t =  $('.true', w),
+					f =  $('.false', w),
+					l = $('.label-wrap', w),
+					knob = $('.knob', w);
 
-				var w = s.parent(),
-						$true =  $('.true', w),
-						$false =  $('.false', w),
-						l = $('.label-wrap', w),
-						knob = $('.knob', w);
+					if ( t.text().length > f.text().length ) {
+						var offset = t.width() + ( parseInt(t.css('padding-left'))+(parseInt(t.css('padding-right'))-(knob.width()/2)) );
+						f.width( t.width() );
+					} else {
+						var offset =  f.width() + ( parseInt(f.css('padding-right'))+(parseInt(f.css('padding-left'))-(knob.width()/2)) );
+						t.width( f.width() );			
+					}
+					var width = offset + knob.width();
+					w.css({
+						'width': width
+					})
 
-						if ( $true.text().length > $false.text().length ) {
-							var offset = $true.width() + 20;
-							$false.width( $true.width() );
-						} else {
-							var offset =  $false.width() + 20;
-							$true.width( $false.width() );			
-						}
-
-						w.css({
-							'width': offset + 30
-						})
-
-						knob.css({
-							'left': offset
-						})
-						s.attr('checked') ? toRight(knob, l, offset, s, 1) : toLeft(knob, l, offset, s, 1);
+					knob.css({
+						'left': offset
+					})
+					s.attr('checked') ? toRight(knob, l, offset, s, 1) : toLeft(knob, l, offset, s, 1);
 
 
 
@@ -49,7 +48,7 @@
 							$('.super-switch-wrap .label-wrap').css({'left': - offset + ui.position.left + 'px'});
 						},
 						stop: function(event, ui) {
-							if ( ui.position.left > ( (offset+30)/2 - 15 ) ) {
+							if ( ui.position.left > ( (width)/2 - knob.width()/2 ) ) {
 								knob.animate({'left': offset }, 200);
 								l.animate({'left': 0}, 200, function() {
 									setState(true, s);
