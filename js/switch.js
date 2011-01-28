@@ -8,17 +8,16 @@
 		
 		this.each(function(){
 			
-				var s = $(this).css('display', 'none');
-				s.after('<div class="super-switch-wrap">'+
-				    '<span class="knob"></span>'+
-				    '<div class="label-wrap">'+
-				        '<span class="label true">'+$(this).data('true')+'</span>'+
-				        '<span class="label false">'+$(this).data('false')+'</span>'+
-				    '</div>'+
-				'</div>');
+				var s = $(this).css('display', 'none').wrap('<div class="super-switch-wrap"></div>').after(
+					    '<span class="knob"></span>'+
+					    '<div class="label-wrap">'+
+					        '<span class="label true">'+$(this).data('true')+'</span>'+
+					        '<span class="label false">'+$(this).data('false')+'</span>'+
+					    '</div>'
+				);
 						
 
-				var w = $('.super-switch-wrap'),
+				var w = s.parent(),
 						$true =  $('.true', w),
 						$false =  $('.false', w),
 						l = $('.label-wrap', w),
@@ -70,9 +69,7 @@
 						if ( parseInt($(this).css('left')) > 0 ) {
 							toLeft(knob, l, offset, s, 0);
 						} else {
-							console.log('toRight');
-							 toRight(knob, l, offset, s, 0);
-						
+							toRight(knob, l, offset, s, 0);
 						}
 					})
 
