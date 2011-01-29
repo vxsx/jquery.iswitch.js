@@ -1,8 +1,15 @@
+/** 
+*  @author Vadim Sikora ( http://vxsx.ru )
+*  NO COPYRIGHTS, DO WHAT YOU WANT
+*  @requires jquery 1.4.4 or higher
+*  			 jquery ui 1.8.9 or higher
+*/
+
 (function($){
 	//TODO: make it work with a customizable css, so all dimensions -> to variables -- done
 	//		make all variables into one object and pass this object to a functions instead of passing too many variables
 	//		disabled state
-    $.fn.switch = function(options) {
+    $.fn.iswitch = function(options) {
         var settings = $.extend({
            //
         }, options);
@@ -45,7 +52,7 @@
 				        containment: 'parent',
 				        axis: 'x',
 				        drag: function(event, ui) {
-							$('.super-switch-wrap .label-wrap').css({'left': - offset + ui.position.left + 'px'});
+							l.css({'left': - offset + ui.position.left + 'px'});
 						},
 						stop: function(event, ui) {
 							if ( ui.position.left > ( (width)/2 - knob.width()/2 ) ) {
@@ -126,5 +133,5 @@
 })(jQuery);
 
 $(function() {
-  $('input.js-switch').switch();
+  $('input.js-switch').iswitch();
 })
