@@ -9,12 +9,21 @@
 	<script type="text/javascript" src="js/switch.js"></script>
 </head>
 <body>
-	<input type="checkbox" name="switch" class="js-switch" data-true="black" data-false="white">
+	<div id="inside">
+		<input type="checkbox" name="switch" class="js-switch inside" data-true="grey" data-false="white">
+	</div>
+	
+	<div id="outside">
+		<input type="checkbox" name="switch-outside" class="js-switch outside" data-true="edit" data-false="view">
+	</div>
+	
+	
 	<script type="text/javascript">
-		$('input').change(function() {
-			$('body').css({ 'background-color': this.checked ? 'black' : 'white' });
+		$('input.inside').change(function() {
+			$('body').css({ 'background-color': this.checked ? 'grey' : 'white' });
 			//or anything you ever want, just like normal checkbox
 		})
 	</script>
+	
 </body>
 </html>

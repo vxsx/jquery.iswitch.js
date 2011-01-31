@@ -8,19 +8,21 @@
 (function($){
 	//TODO: make it work with a customizable css, so all dimensions -> to variables -- done
 	//		make all variables into one object and pass this object to a functions instead of passing too many variables
+	//		labels outside switch! -- done
+	//		tweak animation with outside labels
 	//		disabled state
     $.fn.iswitch = function(options) {
         var settings = $.extend({
-           //
+           labelsOutside: false
         }, options);
 		
 		this.each(function(){
 			
-				var s = $(this).css('display', 'none').wrap('<div class="super-switch-wrap"></div>').after(
+				var s = $(this).css('display', 'none').wrap('<div class="super-switch-wrap'+(settings.labelsOutside ? ' outside':'')+'"></div>').after(
 					    '<span class="knob"></span>'+
 					    '<div class="label-wrap">'+
-					        '<span class="label true">'+$(this).data('true')+'</span>'+
-					        '<span class="label false">'+$(this).data('false')+'</span>'+
+					        '<span class="label true">'+ ( (settings.labelsOutside) ? ' ' : $(this).data('true') )+'</span>'+
+					        '<span class="label false">'+ ( (settings.labelsOutside) ? ' ' : $(this).data('false') )+'</span>'+
 					    '</div>'
 					),
 					w = s.parent(),
@@ -28,6 +30,13 @@
 					f =  $('.false', w),
 					l = $('.label-wrap', w),
 					knob = $('.knob', w);
+
+					if ( settings.labelsOutside ) {
+						w.before('<label class="switch-label-false">'+s.data('false')+'</label> ').after(' <label class="switch-label-true">'+s.data('true')+'</label>');
+						var lf = w.prev(),
+							lt = w.next();
+					
+					}
 
 					if ( t.text().length > f.text().length ) {
 						var offset = t.width() + ( parseInt(t.css('padding-left'))+(parseInt(t.css('padding-right'))-(knob.width()/2)) );
@@ -45,9 +54,22 @@
 						'left': offset
 					})
 					s.attr('checked') ? toRight(knob, l, offset, s, 1) : toLeft(knob, l, offset, s, 1);
-
-
-
+					
+				 	if ( settings.labelsOutside ) {
+						s.attr('checked') ? lt.addClass('active') : lf.addClass('active');
+					
+						lf.click(function(){
+							toLeft(knob, l, offset, s, 0);
+							lt.removeClass('active');
+							lf.addClass('active');
+						});
+					
+						lt.click(function(){
+							toRight(knob, l, offset, s, 0);
+							lf.removeClass('active');
+							lt.addClass('active');
+						})
+					}
 				    knob.draggable({
 				        containment: 'parent',
 				        axis: 'x',
@@ -59,12 +81,20 @@
 								knob.animate({'left': offset }, 200);
 								l.animate({'left': 0}, 200, function() {
 									setState(true, s);
+									if ( settings.labelsOutside ) {
+										lf.removeClass('active');
+										lt.addClass('active');
+									}
 								});
 								
 							} else {
 								knob.animate({'left': 0 }, 200);	
 								l.animate({'left': -offset}, 200, function() {
 									setState(false, s);									
+									if ( settings.labelsOutside ) {
+										lt.removeClass('active');
+										lf.addClass('active');
+									}
 								});
 
 							}
@@ -74,8 +104,16 @@
 					knob.click(function(){
 						if ( parseInt($(this).css('left')) > 0 ) {
 							toLeft(knob, l, offset, s, 0);
+							if ( settings.labelsOutside ) {
+								lt.removeClass('active');
+								lf.addClass('active');
+							}
 						} else {
 							toRight(knob, l, offset, s, 0);
+							if ( settings.labelsOutside ) {
+								lf.removeClass('active');
+								lt.addClass('active');
+							}
 						}
 					})
 
@@ -133,5 +171,6 @@
 })(jQuery);
 
 $(function() {
-  $('input.js-switch').iswitch();
+  $('input.js-switch.inside').iswitch();
+  $('input.js-switch.outside').iswitch({ labelsOutside: true });
 })
