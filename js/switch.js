@@ -6,9 +6,7 @@
 */
 
 (function($){
-	//TODO: make it work with a customizable css, so all dimensions -> to variables -- done
-	//		make all variables into one object and pass this object to a functions instead of passing too many variables
-	//		labels outside switch! -- done
+	//TODO:	make all variables into one object and pass this object to a functions instead of passing too many variables
 	//		tweak animation with outside labels
 	//		disabled state
     $.fn.iswitch = function(options) {

@@ -11,12 +11,22 @@ body {
 }
 .super-switch-wrap {
   height: 20px;
-  border: 1px solid black;
+  border: 1px solid #595858;
   display: inline-block;
   vertical-align: bottom;
   background: #3D3D3D;
   background: -moz-linear-gradient(top, #3d3d3d 0%, #595858 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3d3d3d), color-stop(100%, #595858));
+  /*-webkit-box-shadow:rgba(0, 0, 0, 0.496094) 0px 1px 4px inset;
+		-moz-box-shadow:rgba(0, 0, 0, 0.496094) 0px 1px 4px inset;
+		background: #888685;
+		color: #FBF8F6 !important;
+		text-shadow: rgba(0, 0, 0, 0.699219) 0px 1px 0px;
+		font-size: 12px;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		*/
+
   color: white;
   font-family: Helvetica, Arial;
   font-size: 14px;
@@ -66,6 +76,11 @@ body {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+}
+.super-switch-wrap .knob.ui-draggable-dragging, .super-switch-wrap .knob:active {
+  background: #e6e6e6;
+  background: -moz-linear-gradient(top, #e6e6e6 0%, #a8a8a8 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e6e6e6), color-stop(100%, #a8a8a8));
 }
 .super-switch-wrap.outside {
   height: 16px;
