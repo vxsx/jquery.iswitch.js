@@ -6,7 +6,7 @@ body {
   padding: 200px 0px;
   text-align: center;
 }
-#inside {
+#inside, #outside, #non-clickable {
   margin-bottom: 40px;
 }
 .super-switch-wrap {

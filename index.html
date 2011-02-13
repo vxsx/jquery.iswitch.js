@@ -10,16 +10,24 @@
 </head>
 <body>
 	<div id="inside">
-		Background: <input type="checkbox" name="switch" class="js-switch inside" data-true="grey" data-false="white">
+		Background: <input type="checkbox" name="switch" class="js-switch" data-true="grey" data-false="white">
 	</div>
 	
 	<div id="outside">
-		<input type="checkbox" name="switch-outside" class="js-switch outside" data-true="edit" data-false="view">
+		<input type="checkbox" name="switch-outside" class="js-switch" data-true="edit" data-false="view">
+	</div>
+	
+	<div id="non-clickable">
+		Non-clickable one <input type="checkbox" name="switch-non-clickable" class="js-switch" data-true="clicks" data-false="no"> only dragging
+	</div>
+	
+	<div id="non-draggable">
+		Non-draggable one <input type="checkbox" name="switch-non-clickable" class="js-switch" data-true="dragging" data-false="no"> only clicking
 	</div>
 	
 	
 	<script type="text/javascript">
-		$('input.inside').change(function() {
+		$('#inside input').change(function() {
 			$('body').css({ 'background-color': this.checked ? 'grey' : 'white' });
 			//or anything you ever want, just like normal checkbox
 		})
