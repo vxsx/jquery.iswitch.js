@@ -11,7 +11,9 @@
 	//		disabled state
     $.fn.iswitch = function(options) {
         var settings = $.extend({
-           labelsOutside: false
+           	labelsOutside: false,
+			clickable: true,
+			draggable: true
         }, options);
 		
 		this.each(function(){
@@ -68,7 +70,7 @@
 							lt.addClass('active');
 						})
 					}
-				    knob.draggable({
+				    settings.draggable && knob.draggable({
 				        containment: 'parent',
 				        axis: 'x',
 				        drag: function(event, ui) {
@@ -98,8 +100,9 @@
 							}
 						}
 				    })
-
-					knob.click(function(){
+					
+					
+					settings.clickable && knob.click(function(){
 						if ( parseInt($(this).css('left')) > 0 ) {
 							toLeft(knob, l, offset, s, 0);
 							if ( settings.labelsOutside ) {
@@ -169,6 +172,9 @@
 })(jQuery);
 
 $(function() {
-  $('input.js-switch.inside').iswitch();
-  $('input.js-switch.outside').iswitch({ labelsOutside: true });
+  $('#inside .js-switch').iswitch();
+  $('#outside .js-switch').iswitch({ labelsOutside: true });
+  $('#non-clickable .js-switch').iswitch({ clickable: false });
+  $('#non-draggable .js-switch').iswitch({ draggable: false });
+
 })
