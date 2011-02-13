@@ -13,3 +13,13 @@ Default options
 	clickable : true
 	draggable : true
 	
+Using:
+
+    <input type="chekbox" name="younameit" id="switch" data-true="true label" data-false="false label">
+
+    $('#switch').iswitch();
+
+
+Note
+-------
+I just needed the iphonish switch for our company's inner project, and because none of the available on the web solutions worked for me, i did this using css3 and jquery. No, it's not crossbrowser and it's likely never be.
