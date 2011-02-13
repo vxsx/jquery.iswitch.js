@@ -1,4 +1,4 @@
-#switch.js
+#jquery.switch.js
 Plugin that makes iphone-like checkboxes  
   
 Requires  
