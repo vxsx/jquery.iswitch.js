@@ -38,12 +38,12 @@ body {
   box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
   padding: 5px 0;
   opacity: 1;
-  -moz-transition: opacity linear 0.1s;
-  -webkit-transition: opacity linear 0.1s;
-  -o-transition: opacity linear 0.1s;
-  transition: opacity linear 0.1s;
+  -moz-transition: opacity linear 0.2s;
+  -webkit-transition: opacity linear 0.2s;
+  -o-transition: opacity linear 0.2s;
+  transition: opacity linear 0.2s;
   -webkit-backface-visibility: hidden;
-  -webkit-transition: all linear 0.1s;
+  -webkit-transition: all linear 0.2s;
 }
 #github span:last-child {
   background: #65BDFB;
