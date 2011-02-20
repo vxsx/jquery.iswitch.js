@@ -5,9 +5,61 @@
 body {
   padding: 200px 0px;
   text-align: center;
+  overflow: hidden;
 }
 #inside, #outside, #non-clickable {
   margin-bottom: 40px;
+}
+#github {
+  color: white;
+  right: -65px;
+  height: 30px;
+  top: 40px;
+  position: absolute;
+  text-decoration: none;
+  width: 250px;
+  opacity: 1;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#github span {
+  background: #000;
+  font-size: 14px;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 250px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
+  padding: 5px 0;
+  opacity: 1;
+  -moz-transition: opacity linear 0.1s;
+  -webkit-transition: opacity linear 0.1s;
+  -o-transition: opacity linear 0.1s;
+  transition: opacity linear 0.1s;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: all linear 0.1s;
+}
+#github span:last-child {
+  background: #65BDFB;
+  -webkit-transform: rotatex(180deg);
+  -moz-transform: rotatex(180deg);
+  opacity: 0;
+}
+#github:hover span:first-child {
+  opacity: 0;
+  -webkit-transform: rotatex(180deg);
+  -moz-transform: rotatex(180deg);
+}
+#github:hover span:last-child {
+  opacity: 1;
+  -webkit-transform: rotatex(360deg);
+  -moz-transform: rotatex(360deg);
 }
 .super-switch-wrap {
   height: 20px;
