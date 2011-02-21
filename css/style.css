@@ -159,3 +159,10 @@ body {
 .switch-label-true.active, .switch-label-false.active {
   color: #444;
 }
+#inside .super-switch-wrap {
+  background: -moz-linear-gradient(left, #31f960 0%, #2ffc3a 50%, #ff2828 51%, #ff2b2b 100%);
+  /* firefox */
+
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #31f960), color-stop(50%, #2ffc3a), color-stop(51%, #ff2828), color-stop(100%, #ff2b2b));
+  /* webkit */
+}

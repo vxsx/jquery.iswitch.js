@@ -47,12 +47,13 @@
 					}
 					var width = offset + knob.width();
 					w.css({
-						'width': width
+						'width': width,
+						'background-size': (width*2 - knob.width()/2)  + 'px 20px'
 					})
 
-					knob.css({
-						'left': offset
-					})
+				//	knob.css({
+				//		'left': offset
+				//	})
 					s.attr('checked') ? toRight(knob, l, offset, s, 1) : toLeft(knob, l, offset, s, 1);
 					
 				 	if ( settings.labelsOutside ) {
@@ -75,6 +76,7 @@
 				        axis: 'x',
 				        drag: function(event, ui) {
 							l.css({'left': - offset + ui.position.left + 'px'});
+							w.css({'background-position':- offset + ui.position.left + 'px 0px' })
 						},
 						stop: function(event, ui) {
 							if ( ui.position.left > ( (width)/2 - knob.width()/2 ) ) {
@@ -118,7 +120,8 @@
 						}
 					})
 
-					
+
+				
 
 
 
