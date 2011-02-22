@@ -7,13 +7,23 @@
 	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.8.9.custom.min.js"></script>
 	<script type="text/javascript" src="js/jquery.iswitch.js"></script>
-	<script type="text/javascript" src="http://plugins.jquery.com/files/jquery.color.js.txt"></script>
 </head>
 <body>
 	<a href="http://github.com/vxsx" id="github"><span>Fork me on GitHub</span><span>Be nice!</span></a>
 	
+	
+	<script type="text/javascript">
+		$(function() {
+			$('#inside .js-switch, #colored .js-switch').iswitch();
+			$('#outside .js-switch').iswitch({ labelsOutside: true });
+			$('#non-clickable .js-switch').iswitch({ clickable: false });
+			$('#non-draggable .js-switch').iswitch({ draggable: false });
+		})
+	</script>
+	
+	
 	<div id="inside">
-		Background: <input type="checkbox" name="switch" class="js-switch" data-true="grey" data-true-color="green" data-false="white" data-false-color="red">
+		Background: <input type="checkbox" name="switch" class="js-switch" data-true="grey" data-false="white">
 	</div>
 	
 	<div id="outside">
@@ -25,7 +35,11 @@
 	</div>
 	
 	<div id="non-draggable">
-		Non-draggable one <input type="checkbox" name="switch-non-clickable" class="js-switch" data-true="dragging" data-false="no"> only clicking
+		Non-draggable one <input type="checkbox" name="switch-non-draggable" class="js-switch" data-true="dragging" data-false="no"> only clicking
+	</div>
+	
+	<div id="colored">
+		Colored one <input type="checkbox" name="switch-colored" class="js-switch" checked="checked" data-true="#3B6C8F" data-false="black" data-true-color="#3B6C8F" data-false-color="black"> <br><br>really didn't wanted to show green/red, i guess it's pretty obvious
 	</div>
 	
 	

@@ -12,7 +12,10 @@ body {
   text-align: center;
   overflow: hidden;
 }
-#inside, #outside, #non-clickable {
+#inside,
+#outside,
+#non-clickable,
+#non-draggable {
   margin-bottom: 40px;
 }
 #github {
@@ -139,13 +142,13 @@ body {
   background: -moz-linear-gradient(top, #e6e6e6 0%, #a8a8a8 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e6e6e6), color-stop(100%, #a8a8a8));
 }
-.super-switch-wrap.outside {
+.super-switch-wrap.switch-labels-outside {
   height: 16px;
   -webkit-border-radius: 16px;
   -moz-border-radius: 16px;
   border-radius: 16px;
 }
-.super-switch-wrap.outside .knob {
+.super-switch-wrap.switch-labels-outside .knob {
   height: 16px;
   width: 20px;
   -webkit-border-radius: 16px;
@@ -159,10 +162,8 @@ body {
 .switch-label-true.active, .switch-label-false.active {
   color: #444;
 }
-#inside .super-switch-wrap {
-  background: -moz-linear-gradient(left, #31f960 0%, #2ffc3a 50%, #ff2828 51%, #ff2b2b 100%);
-  /* firefox */
-
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #31f960), color-stop(50%, #2ffc3a), color-stop(51%, #ff2828), color-stop(100%, #ff2b2b));
-  /* webkit */
-}
+/*
+#inside .super-switch-wrap { //test feature
+	background: -moz-linear-gradient(left, green 0%, green 50%, red 51%, red 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,green), color-stop(50%,green), color-stop(51%,red), color-stop(100%,red));
+}*/

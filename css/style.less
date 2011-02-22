@@ -23,6 +23,7 @@ body {
 #inside
 , #outside
 , #non-clickable
+, #non-draggable
 {
 	margin-bottom: 40px;
 }
@@ -180,7 +181,7 @@ body {
 	}
 	
 	
-	&.outside {
+	&.switch-labels-outside {
 		height: 16px;
 		.border-radius(16px);
 		.knob {
@@ -203,8 +204,8 @@ body {
 	}
 }
 
-
-#inside .super-switch-wrap {
-	background: -moz-linear-gradient(left, #31F960 0%, #2FFC3A 50%, #FF2828 51%, #FF2B2B 100%); /* firefox */
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#31F960), color-stop(50%,#2FFC3A), color-stop(51%,#FF2828), color-stop(100%,#FF2B2B)); /* webkit */	
-}
+/*
+#inside .super-switch-wrap { //test feature
+	background: -moz-linear-gradient(left, green 0%, green 50%, red 51%, red 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,green), color-stop(50%,green), color-stop(51%,red), color-stop(100%,red));
+}*/

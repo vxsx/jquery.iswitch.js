@@ -1,12 +1,11 @@
 #jquery.switch.js
-Plugin that makes iphone-like checkboxes  
+Plugin that makes iphone-like checkboxes
   
 Requires  
-<ul>
-	<li>jquery 1.4.4 or higher</li>
-	<li>jquery ui 1.8.9 or higher</li>
-</ul>
-  	
+
+*  jquery 1.4.4 or higher
+*  jquery ui 1.8.9 or higher
+
 Default options 
 
 	labelsOutside: false
@@ -15,11 +14,24 @@ Default options
 	
 Using:
 
-    <input type="chekbox" name="younameit" id="switch" data-true="true label" data-false="false label">
+    <input type="chekbox" name="younameit" id="switch" data-true="true label" data-true-color="green" data-false="false label" data-false-color="red">
+	<script type="text/javascript">
+    	$('#switch').iswitch();
+	</script>
 
-    $('#switch').iswitch();
-
+color attributes are optional, just see the [demo](http://vxsx.github.com/jquery.iswitch.js)
 
 Note
 -------
 I just needed the iphonish switch for our company's inner project, and because none of the available on the web solutions worked for me, i did this using css3 and jquery. No, it's not crossbrowser and it's likely never be.
+
+
+
+TODO:
+-----
+* make a colored one
+* set settings through js, not only data-attributes
+* tweak animation with outside labels
+* rewrite all js, just too messy :D
+* disabled state (really don't want this)
+* need nice demo-page :)

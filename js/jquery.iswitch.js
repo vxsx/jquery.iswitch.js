@@ -6,9 +6,6 @@
 */
 
 (function($){
-	//TODO:	make all variables into one object and pass this object to a functions instead of passing too many variables
-	//		tweak animation with outside labels
-	//		disabled state
     $.fn.iswitch = function(options) {
         var settings = $.extend({
            	labelsOutside: false,
@@ -18,7 +15,7 @@
 		
 		this.each(function(){
 			
-				var s = $(this).css('display', 'none').wrap('<div class="super-switch-wrap'+(settings.labelsOutside ? ' outside':'')+'"></div>').after(
+				var s = $(this).css('display', 'none').wrap('<div class="super-switch-wrap'+(settings.labelsOutside ? ' switch-labels-outside':'')+'"></div>').after(
 					    '<span class="knob"></span>'+
 					    '<div class="label-wrap">'+
 					        '<span class="label true">'+ ( (settings.labelsOutside) ? ' ' : $(this).data('true') )+'</span>'+
@@ -46,27 +43,36 @@
 						t.width( f.width() );			
 					}
 					var width = offset + knob.width();
+					
+					if ( s.data('true-color') && s.data('false-color')) {
+						w.css(
+							$.browser.mozilla ? //too dirty
+							{ 'background': '-moz-linear-gradient(left, '+ s.data('true-color') +' 0%, '+s.data('true-color')+' 50%, '+s.data('false-color')+' 51%, '+s.data('false-color')+' 100%)' } : 
+							{ 'background': '-webkit-gradient(linear, left top, right top, color-stop(0%,'+s.data('true-color')+'), color-stop(50%,'+s.data('true-color')+'), color-stop(51%,'+s.data('false-color')+'), color-stop(100%,'+s.data('false-color')+'))' }
+						)
+					}
+					
 					w.css({
 						'width': width,
-						'background-size': (width*2 - knob.width()/2)  + 'px 20px'
+						'background-size': (width*2 - knob.width())  + 'px 20px'
 					})
 
 				//	knob.css({
 				//		'left': offset
 				//	})
-					s.attr('checked') ? toRight(knob, l, offset, s, 1) : toLeft(knob, l, offset, s, 1);
+					s.attr('checked') ? toRight(w, knob, l, offset, s, 1) : toLeft(w, knob, l, offset, s, 1);
 					
 				 	if ( settings.labelsOutside ) {
 						s.attr('checked') ? lt.addClass('active') : lf.addClass('active');
 					
 						lf.click(function(){
-							toLeft(knob, l, offset, s, 0);
+							toLeft(w, knob, l, offset, s, 0);
 							lt.removeClass('active');
 							lf.addClass('active');
 						});
 					
 						lt.click(function(){
-							toRight(knob, l, offset, s, 0);
+							toRight(w, knob, l, offset, s, 0);
 							lf.removeClass('active');
 							lt.addClass('active');
 						})
@@ -81,6 +87,7 @@
 						stop: function(event, ui) {
 							if ( ui.position.left > ( (width)/2 - knob.width()/2 ) ) {
 								knob.animate({'left': offset }, 200);
+								w.animate({'background-position': '0px 0px'}, 200); //colors
 								l.animate({'left': 0}, 200, function() {
 									setState(true, s);
 									if ( settings.labelsOutside ) {
@@ -91,6 +98,7 @@
 								
 							} else {
 								knob.animate({'left': 0 }, 200);	
+								w.animate({'background-position': - offset + 'px 0px'}, 200); //colors
 								l.animate({'left': -offset}, 200, function() {
 									setState(false, s);									
 									if ( settings.labelsOutside ) {
@@ -106,13 +114,13 @@
 					
 					settings.clickable && knob.click(function(){
 						if ( parseInt($(this).css('left')) > 0 ) {
-							toLeft(knob, l, offset, s, 0);
+							toLeft(w, knob, l, offset, s, 0);
 							if ( settings.labelsOutside ) {
 								lt.removeClass('active');
 								lf.addClass('active');
 							}
 						} else {
-							toRight(knob, l, offset, s, 0);
+							toRight(w, knob, l, offset, s, 0);
 							if ( settings.labelsOutside ) {
 								lf.removeClass('active');
 								lt.addClass('active');
@@ -134,13 +142,15 @@
         
     };
 
-		function toRight(knob,l, offset, s, first) {
+		function toRight(w, knob, l, offset, s, first) {
 			if ( first ) {
 				knob.css({	'left': offset	});
+				w.css({'background-position': '0px 0px'}); //colors				
 				l.css({'left': 0});
 				setState(true, s);
 			} else {
 				knob.animate({	'left': offset	});
+				w.animate({'background-position': '0px 0px'}); //colors				
 				l.animate({'left': 0}, function() {
 					setState(true, s);
 				});
@@ -148,13 +158,15 @@
 
 		}
 
-		function toLeft(knob,l, offset, s, first) {
+		function toLeft(w, knob, l, offset, s, first) {
 			if ( first ) {
 				knob.css({	'left': 0	});
+				w.css({'background-position': - offset + 'px 0px'}); //colors				
 				l.css({'left': -offset });
 				setState(false, s);
 			} else {
 				knob.animate({	'left': 0	});
+				w.animate({'background-position': - offset + 'px 0px'}); //colors				
 				l.animate({'left': -offset }, function() {
 					setState(false, s);
 				});
@@ -173,11 +185,3 @@
 		}
 	
 })(jQuery);
-
-$(function() {
-  $('#inside .js-switch').iswitch();
-  $('#outside .js-switch').iswitch({ labelsOutside: true });
-  $('#non-clickable .js-switch').iswitch({ clickable: false });
-  $('#non-draggable .js-switch').iswitch({ draggable: false });
-
-})
