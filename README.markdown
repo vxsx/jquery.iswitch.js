@@ -14,12 +14,22 @@ Default options
 	
 Using:
 
-    <input type="chekbox" name="younameit" id="switch" data-true="true label" data-true-color="green" data-false="false label" data-false-color="red">
+    <input type="chekbox" name="younameit" id="switch" data-true-label="true label" data-true-color="green" data-false-label="false label" data-false-color="red">
 	<script type="text/javascript">
     	$('#switch').iswitch();
 	</script>
 
-color attributes are optional, just see the [demo](http://vxsx.github.com/jquery.iswitch.js)
+You can also set labels not only from data-attributes, but from javascript too, like
+
+	$('#switch').iswitch({ 
+		trueLabel: 'this is a true label',
+		trueColor: '#00FF00',
+		falseLabel: 'false label',
+		falseColor: 'red'
+	});
+
+in case you set it both ways, js version have a priority
+color attributes are optional, but if set, then they must be set both (you can use `transparent` anyway), see the [demo](http://vxsx.github.com/jquery.iswitch.js)
 
 Note
 -------
@@ -29,8 +39,7 @@ I just needed the iphonish switch for our company's inner project, and because n
 
 TODO:
 -----
-* make a colored one
-* set settings through js, not only data-attributes
+
 * tweak animation with outside labels
 * rewrite all js, just too messy :D
 * disabled state (really don't want this)

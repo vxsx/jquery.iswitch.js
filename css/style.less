@@ -18,8 +18,14 @@ body {
 	position: relative;
 	padding: 200px 0px;
 	text-align: center;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
+.note {
+	font-size: 12px;
+	color: grey;
+}
+
 #inside
 , #outside
 , #non-clickable
@@ -104,19 +110,13 @@ body {
 	display:inline-block;
 	vertical-align: bottom;
    
- 	background: #3D3D3D; 
+ 	background: #3D3D3D;
 	background: -moz-linear-gradient(top, #3D3D3D 0%, #595858 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3D3D3D), color-stop(100%,#595858)); 
 	
-	/*-webkit-box-shadow:rgba(0, 0, 0, 0.496094) 0px 1px 4px inset;
-		-moz-box-shadow:rgba(0, 0, 0, 0.496094) 0px 1px 4px inset;
-		background: #888685;
-		color: #FBF8F6 !important;
-		text-shadow: rgba(0, 0, 0, 0.699219) 0px 1px 0px;
-		font-size: 12px;
-		-webkit-border-radius: 12px;
-		-moz-border-radius: 12px;
-		*/
+	-webkit-box-shadow:rgba(0, 0, 0, 0.3) 1px 1px 1px inset;
+	-moz-box-shadow:rgba(0, 0, 0, 0.3) 1px 1px 1px inset;
+	box-shadow:rgba(0, 0, 0, 0.3) 1px 1px 1px inset;
 	
 	color: white;
 	font-family: Helvetica, Arial;
@@ -137,7 +137,7 @@ body {
 		.true
 		, .false 
 		{
-		    display: inline-block;   
+		    display: inline-block;
 		    padding: 0 10px;
 		    text-align: center;
 		    position: relative;
@@ -148,11 +148,11 @@ body {
 		}
 	
 		.true {
-		    padding: 0 25px 0 10px;   
+		    padding: 0 25px 0 10px;
 		}
 	
 		.false {
-		    padding: 0 10px 0 25px;   
+		    padding: 0 10px 0 25px;
 		}
 	}
 	
@@ -167,16 +167,16 @@ body {
 	    z-index: 999;
 		cursor: pointer;
 		background: #FFFFFF; 
-		background: -moz-linear-gradient(top, #FFFFFF 0%, #C1C1C1 100%); 
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#C1C1C1)); 
+		background: -moz-linear-gradient(top, #FFFFFF 0%, #C1C1C1 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#C1C1C1));
 	
 	    .border-radius; 
 	
 		&.ui-draggable-dragging,
 		&:active {
-			background: darken(#FFFFFF, 10%); 
-			background: -moz-linear-gradient(top, darken(#FFFFFF, 10%) 0%, darken(#C1C1C1, 10%) 100%); 
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,darken(#FFFFFF, 10%)), color-stop(100%,darken(#C1C1C1, 10%))); 
+			background: darken(#FFFFFF, 10%);
+			background: -moz-linear-gradient(top, darken(#FFFFFF, 10%) 0%, darken(#C1C1C1, 10%) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,darken(#FFFFFF, 10%)), color-stop(100%,darken(#C1C1C1, 10%)));
 		}
 	}
 	

@@ -17,38 +17,37 @@
 			$('#inside .js-switch, #colored .js-switch').iswitch();
 			$('#outside .js-switch').iswitch({ labelsOutside: true });
 			$('#non-clickable .js-switch').iswitch({ clickable: false });
-			$('#non-draggable .js-switch').iswitch({ draggable: false });
+			$('#non-draggable .js-switch').iswitch({ draggable: false, trueLabel: 'dragging' });
+			
+			$('#inside input').change(function() {
+				$('body').css({ 'background-color': this.checked ? 'grey' : 'white' });
+				//or anything you ever want, just like normal checkbox
+			})
 		})
 	</script>
 	
 	
 	<div id="inside">
-		Background: <input type="checkbox" name="switch" class="js-switch" data-true="grey" data-false="white">
+		Background: <input type="checkbox" name="switch" class="js-switch" data-true-label="grey" data-false-label="white">
 	</div>
 	
 	<div id="outside">
-		<input type="checkbox" name="switch-outside" class="js-switch" data-true="edit" data-false="view">
+		<input type="checkbox" name="switch-outside" class="js-switch" data-true-label="edit" data-false-label="view">
 	</div>
 	
 	<div id="non-clickable">
-		Non-clickable one <input type="checkbox" name="switch-non-clickable" class="js-switch" data-true="clicks" data-false="no"> only dragging
-	</div>
-	
+		Non-clickable one <input type="checkbox" name="switch-non-clickable" class="js-switch" data-true-label="clicks" data-false-label="no"> only dragging
+    </div>
+
 	<div id="non-draggable">
-		Non-draggable one <input type="checkbox" name="switch-non-draggable" class="js-switch" data-true="dragging" data-false="no"> only clicking
+		Non-draggable one <input type="checkbox" name="switch-non-draggable" class="js-switch" data-true-label="some irrelevant shit" data-false-label="no"> only clicking<br>
+		<span class="note">note: this is done automatically if you didn't include jquery ui library</span>
 	</div>
 	
 	<div id="colored">
-		Colored one <input type="checkbox" name="switch-colored" class="js-switch" checked="checked" data-true="#3B6C8F" data-false="black" data-true-color="#3B6C8F" data-false-color="black"> <br><br>really didn't wanted to show green/red, i guess it's pretty obvious
+		Colored one <input type="checkbox" name="switch-colored" class="js-switch" checked="checked" data-true-label="#3B6C8F" data-false-label="black" data-true-color="#3B6C8F" data-false-color="black"><br>
+		<span class="note">really didn't wanted to show green/red, i guess it's pretty obvious</span>
 	</div>
-	
-	
-	<script type="text/javascript">
-		$('#inside input').change(function() {
-			$('body').css({ 'background-color': this.checked ? 'grey' : 'white' });
-			//or anything you ever want, just like normal checkbox
-		})
-	</script>
 	
 </body>
 </html>

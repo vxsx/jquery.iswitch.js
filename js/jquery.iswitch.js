@@ -1,4 +1,4 @@
-/** 
+/**
 *  @author Vadim Sikora ( http://vxsx.ru )
 *  NO COPYRIGHTS, DO WHAT YOU WANT
 *  @requires jquery 1.4.4 or higher
@@ -14,14 +14,20 @@
         }, options);
 		
 		this.each(function(){
-			
-				var s = $(this).css('display', 'none').wrap('<div class="super-switch-wrap'+(settings.labelsOutside ? ' switch-labels-outside':'')+'"></div>').after(
+				if (!($.ui && $.ui.draggable))
+					settings.draggable = false; //if we don't have jquery ui - we cannot drag things like that
+				
+                var s = $(this).css('display', 'none').wrap('<div class="super-switch-wrap'+(settings.labelsOutside ? ' switch-labels-outside':'')+'"></div>').after(
 					    '<span class="knob"></span>'+
 					    '<div class="label-wrap">'+
-					        '<span class="label true">'+ ( (settings.labelsOutside) ? ' ' : $(this).data('true') )+'</span>'+
-					        '<span class="label false">'+ ( (settings.labelsOutside) ? ' ' : $(this).data('false') )+'</span>'+
+					        '<span class="label true"></span>'+
+					        '<span class="label false"></span>'+
 					    '</div>'
 					),
+					labelTrue  = settings.trueLabel ? settings.trueLabel : s.data('true-label'),
+					labelFalse = settings.falseLabel ? settings.falseLabel : s.data('false-label'),
+					colorTrue  = settings.trueColor ? settings.trueColor : s.data('true-color'),
+					colorFalse = settings.falseColor ? settings.falseColor : s.data('false-color'),
 					w = s.parent(),
 					t =  $('.true', w),
 					f =  $('.false', w),
@@ -29,10 +35,12 @@
 					knob = $('.knob', w);
 
 					if ( settings.labelsOutside ) {
-						w.before('<label class="switch-label-false">'+s.data('false')+'</label> ').after(' <label class="switch-label-true">'+s.data('true')+'</label>');
+						w.before('<label class="switch-label-false">'+labelFalse+'</label> ').after(' <label class="switch-label-true">'+labelTrue+'</label>');
 						var lf = w.prev(),
 							lt = w.next();
-					
+					} else {
+						f.text(labelFalse);
+						t.text(labelTrue);
 					}
 
 					if ( t.text().length > f.text().length ) {
@@ -44,17 +52,18 @@
 					}
 					var width = offset + knob.width();
 					
-					if ( s.data('true-color') && s.data('false-color')) {
+					if ( colorTrue && colorFalse) {
 						w.css(
 							$.browser.mozilla ? //too dirty
-							{ 'background': '-moz-linear-gradient(left, '+ s.data('true-color') +' 0%, '+s.data('true-color')+' 50%, '+s.data('false-color')+' 51%, '+s.data('false-color')+' 100%)' } : 
-							{ 'background': '-webkit-gradient(linear, left top, right top, color-stop(0%,'+s.data('true-color')+'), color-stop(50%,'+s.data('true-color')+'), color-stop(51%,'+s.data('false-color')+'), color-stop(100%,'+s.data('false-color')+'))' }
+							{ 'background': '-moz-linear-gradient(left, '+ colorTrue +' 0%, '+ colorTrue +' 50%, '+ colorFalse +' 51%, '+ colorFalse +' 100%)' } : 
+							{ 'background': '-webkit-gradient(linear, left top, right top, color-stop(0%,'+ colorTrue +'), color-stop(50%,'+ colorTrue +'), color-stop(51%,'+ colorFalse +'), color-stop(100%,'+ colorFalse +'))' }
 						)
 					}
 					
 					w.css({
 						'width': width,
-						'background-size': (width*2 - knob.width())  + 'px 20px'
+						'background-size': (width*2 - knob.width())  + 'px 20px',
+						'-moz-background-size': (width*2 - knob.width())  + 'px 20px'
 					})
 
 				//	knob.css({
@@ -82,12 +91,12 @@
 				        axis: 'x',
 				        drag: function(event, ui) {
 							l.css({'left': - offset + ui.position.left + 'px'});
-							w.css({'background-position':- offset + ui.position.left + 'px 0px' })
+							w.css({'background-position':- offset + ui.position.left + 'px 0px' });
 						},
 						stop: function(event, ui) {
 							if ( ui.position.left > ( (width)/2 - knob.width()/2 ) ) {
 								knob.animate({'left': offset }, 200);
-								w.animate({'background-position': '0px 0px'}, 200); //colors
+								w.animate({'background-position': '0px 0px'}, 200);
 								l.animate({'left': 0}, 200, function() {
 									setState(true, s);
 									if ( settings.labelsOutside ) {
@@ -98,7 +107,7 @@
 								
 							} else {
 								knob.animate({'left': 0 }, 200);	
-								w.animate({'background-position': - offset + 'px 0px'}, 200); //colors
+								w.animate({'background-position': - offset + 'px 0px'}, 200);
 								l.animate({'left': -offset}, 200, function() {
 									setState(false, s);									
 									if ( settings.labelsOutside ) {
@@ -136,21 +145,19 @@
 				
 			
 		});
-        
         // Chain:
         return this;
-        
     };
 
 		function toRight(w, knob, l, offset, s, first) {
 			if ( first ) {
 				knob.css({	'left': offset	});
-				w.css({'background-position': '0px 0px'}); //colors				
+				w.css({'background-position': '0px 0px'});
 				l.css({'left': 0});
 				setState(true, s);
 			} else {
 				knob.animate({	'left': offset	});
-				w.animate({'background-position': '0px 0px'}); //colors				
+				w.animate({'background-position': '0px 0px'});
 				l.animate({'left': 0}, function() {
 					setState(true, s);
 				});
@@ -161,17 +168,16 @@
 		function toLeft(w, knob, l, offset, s, first) {
 			if ( first ) {
 				knob.css({	'left': 0	});
-				w.css({'background-position': - offset + 'px 0px'}); //colors				
+				w.css({'background-position': - offset + 'px 0px'});			
 				l.css({'left': -offset });
 				setState(false, s);
 			} else {
 				knob.animate({	'left': 0	});
-				w.animate({'background-position': - offset + 'px 0px'}); //colors				
+				w.animate({'background-position': - offset + 'px 0px'})				
 				l.animate({'left': -offset }, function() {
 					setState(false, s);
 				});
 			}
-
 			
 		}
 		function setState(state, s) {
