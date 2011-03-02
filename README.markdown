@@ -29,6 +29,7 @@ You can also set labels not only from data-attributes, but from javascript too, 
 	});
 
 in case you set it both ways, js version have a priority
+
 color attributes are optional, but if set, then they must be set both (you can use `transparent` anyway), see the [demo](http://vxsx.github.com/jquery.iswitch.js)
 
 Note
