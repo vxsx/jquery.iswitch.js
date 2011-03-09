@@ -13,7 +13,11 @@
 			draggable: true
         }, options);
 		
+		
 		this.each(function(){
+				if (!$(this).is(':checkbox')) 
+					return;
+			
 				if (!($.ui && $.ui.draggable))
 					settings.draggable = false; //if we don't have jquery ui - we cannot drag things like that
 				

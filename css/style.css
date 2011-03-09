@@ -6,6 +6,7 @@ html {
   width: 100%;
 }
 body {
+  font-family: Helvetica, Arial, sans-serif;
   width: 100%;
   position: relative;
   padding: 200px 0px;
@@ -142,6 +143,9 @@ body {
 }
 .super-switch-wrap.switch-labels-outside {
   height: 16px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
   -webkit-border-radius: 16px;
   -moz-border-radius: 16px;
   border-radius: 16px;
