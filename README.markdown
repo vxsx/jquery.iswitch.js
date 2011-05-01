@@ -7,26 +7,28 @@ Requires
 *  jquery ui 1.8.9 or higher
 
 Default options 
-``` javasript
+```
 labelsOutside: false
 clickable : true
 draggable : true
 ```
+
 Using:
-``` html
+```
     <input type="chekbox" name="younameit" id="switch" data-true-label="true label" data-true-color="green" data-false-label="false label" data-false-color="red">
 	<script type="text/javascript">
     	$('#switch').iswitch();
 	</script>
 ```
 You can also set labels not only from data-attributes, but from javascript too, like
-``` javascript
-	$('#switch').iswitch({ 
-		trueLabel: 'this is a true label',
-		trueColor: '#00FF00',
-		falseLabel: 'false label',
-		falseColor: 'red'
-	});
+
+```
+$('#switch').iswitch({ 
+	trueLabel: 'this is a true label',
+	trueColor: '#00FF00',
+	falseLabel: 'false label',
+	falseColor: 'red'
+});
 ```
 in case you set it both ways, js version have a priority
 
