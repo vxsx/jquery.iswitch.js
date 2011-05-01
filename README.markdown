@@ -7,6 +7,7 @@ Requires
 *  jquery ui 1.8.9 or higher
 
 Default options 
+
 ```
 labelsOutside: false
 clickable : true
@@ -14,6 +15,7 @@ draggable : true
 ```
 
 Using:
+
 ```
     <input type="chekbox" name="younameit" id="switch" data-true-label="true label" data-true-color="green" data-false-label="false label" data-false-color="red">
 	<script type="text/javascript">
