@@ -8,7 +8,7 @@ Requires
 
 Default options 
 
-```
+``` javascript
 labelsOutside: false
 clickable : true
 draggable : true
@@ -16,15 +16,15 @@ draggable : true
 
 Using:
 
-```
-    <input type="chekbox" name="younameit" id="switch" data-true-label="true label" data-true-color="green" data-false-label="false label" data-false-color="red">
-	<script type="text/javascript">
-    	$('#switch').iswitch();
-	</script>
+``` html
+<input type="chekbox" name="younameit" id="switch" data-true-label="true label" data-true-color="green" data-false-label="false label" data-false-color="red">
+<script type="text/javascript">
+    $('#switch').iswitch();
+</script>
 ```
 You can also set labels not only from data-attributes, but from javascript too, like
 
-```
+``` javascript
 $('#switch').iswitch({ 
 	trueLabel: 'this is a true label',
 	trueColor: '#00FF00',
