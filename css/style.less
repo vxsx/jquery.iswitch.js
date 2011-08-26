@@ -1,29 +1,30 @@
 .border-radius( @radius: 5px ) {
-	-webkit-border-radius: @radius;
- 	   -moz-border-radius: @radius;
-	        border-radius: @radius;		
+    -webkit-border-radius: @radius;
+       -moz-border-radius: @radius;
+            border-radius: @radius;
 }
 
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-	width: 100%
+    width: 100%
 }
 
 body {
-	width: 100%;
-	position: relative;
-	padding: 200px 0px;
-	text-align: center;
-	overflow-x: hidden;
-	overflow-y: auto;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 100%;
+    position: relative;
+    padding: 200px 0px;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .note {
-	font-size: 12px;
-	color: grey;
+    font-size: 12px;
+    color: grey;
 }
 
 #inside
@@ -31,73 +32,73 @@ body {
 , #non-clickable
 , #non-draggable
 {
-	margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 #github {
-	color: white;
-	right:-65px;
-	height:30px;
-	top:40px;
-	position:absolute;
-	text-decoration:none;
-	width:250px;
-	opacity:1;
+    color: white;
+    right:-65px;
+    height:30px;
+    top:40px;
+    position:absolute;
+    text-decoration:none;
+    width:250px;
+    opacity:1;
 
-	-moz-transform:rotate(45deg);
-	-webkit-transform:rotate(45deg);
-	-o-transform:rotate(45deg);
-	-ms-transform:rotate(45deg);
-	transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -webkit-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    transform:rotate(45deg);
 
-	span {
-		background:#000;
-		font-size:14px;
-		left:0;
-		position:absolute;
-		text-align:center;
-		width:250px;
-		-moz-box-shadow:rgba(0,0,0,0.2) 1px 1px 10px;
-		-webkit-box-shadow:rgba(0,0,0,0.2) 1px 1px 10px;
-		-o-box-shadow:rgba(0,0,0,0.2) 1px 1px 10px;
-		box-shadow:rgba(0,0,0,0.2) 1px 1px 10px;
-		padding: 5px 0;
-		opacity:1;
-				
-		-moz-transition: opacity linear 0.2s;
-		-webkit-transition: opacity linear 0.2s;
-		-o-transition: opacity linear 0.2s;	
-		transition: opacity linear 0.2s;
-		
+    span {
+        background:#000;
+        font-size:14px;
+        left:0;
+        position:absolute;
+        text-align:center;
+        width:250px;
+        -moz-box-shadow:rgba(0,0,0,0.2) 1px 1px 10px;
+        -webkit-box-shadow:rgba(0,0,0,0.2) 1px 1px 10px;
+        -o-box-shadow:rgba(0,0,0,0.2) 1px 1px 10px;
+        box-shadow:rgba(0,0,0,0.2) 1px 1px 10px;
+        padding: 5px 0;
+        opacity:1;
 
-		-webkit-backface-visibility:hidden;
-		-webkit-transition:all linear 0.2s;
-		
-	
-		&:last-child {
-			background: #65BDFB;
-			-webkit-transform:rotateX(180deg);
-			-moz-transform:rotateX(180deg);
-			opacity: 0;
-		}
-	}
-	
-	&:hover {
-		span {
-			&:first-child {
-				opacity: 0;
-				-webkit-transform:rotateX(180deg);
-				-moz-transform:rotateX(180deg);
-			}
-			
-			&:last-child {
-				opacity: 1;
-				-webkit-transform:rotateX(360deg);
-				-moz-transform:rotateX(360deg);
-			}
-		}
-	}
-	
+        -moz-transition: opacity linear 0.2s;
+        -webkit-transition: opacity linear 0.2s;
+        -o-transition: opacity linear 0.2s; 
+        transition: opacity linear 0.2s;
+
+
+        -webkit-backface-visibility:hidden;
+        -webkit-transition:all linear 0.2s;
+
+
+        &:last-child {
+            background: #65BDFB;
+            -webkit-transform:rotateX(180deg);
+            -moz-transform:rotateX(180deg);
+            opacity: 0;
+        }
+    }
+
+    &:hover {
+        span {
+            &:first-child {
+                opacity: 0;
+                -webkit-transform:rotateX(180deg);
+                -moz-transform:rotateX(180deg);
+            }
+
+            &:last-child {
+                opacity: 1;
+                -webkit-transform:rotateX(360deg);
+                -moz-transform:rotateX(360deg);
+            }
+        }
+    }
+
 }
 
 
@@ -107,105 +108,106 @@ body {
 .super-switch-wrap { 
     height: 20px;
     border: 1px solid #595858;
-	display:inline-block;
-	vertical-align: bottom;
-   
- 	background: #3D3D3D;
-	background: -moz-linear-gradient(top, #3D3D3D 0%, #595858 100%); 
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3D3D3D), color-stop(100%,#595858)); 
-	
-	-webkit-box-shadow:rgba(0, 0, 0, 0.3) 1px 1px 1px inset;
-	-moz-box-shadow:rgba(0, 0, 0, 0.3) 1px 1px 1px inset;
-	box-shadow:rgba(0, 0, 0, 0.3) 1px 1px 1px inset;
-	
-	color: white;
-	font-family: Helvetica, Arial;
-	font-size: 14px;
-	text-shadow: 1px 1px 0px black;
+    display:inline-block;
+    vertical-align: bottom;
+
+    background: #3D3D3D;
+    background: -moz-linear-gradient(top, #3D3D3D 0%, #595858 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3D3D3D), color-stop(100%,#595858)); 
+    background: -o-linear-gradient(top, #3D3D3D 0%, #595858 100%); 
+
+    -webkit-box-shadow:rgba(0, 0, 0, 0.3) 1px 1px 1px inset;
+    -moz-box-shadow:rgba(0, 0, 0, 0.3) 1px 1px 1px inset;
+    box-shadow:rgba(0, 0, 0, 0.3) 1px 1px 1px inset;
+
+    color: white;
+    font-family: Helvetica, Arial;
+    font-size: 14px;
+    text-shadow: 1px 1px 0px black;
     width: 75px;
     overflow: hidden;
     position: relative;
 
-	.border-radius(6px);
+    .border-radius(6px);
 
-	.label-wrap {
-	    width: 1000px;
-	    position: absolute;
-	    float: left;
-		font-size: 14px;
+    .label-wrap {
+        width: 1000px;
+        position: absolute;
+        float: left;
+        font-size: 14px;
 
-		.true
-		, .false 
-		{
-		    display: inline-block;
-		    padding: 0 10px;
-		    text-align: center;
-		    position: relative;
-			line-height: 20px;
-			text-transform: uppercase;
-			text-align: center;
-			float: left;
-		}
-	
-		.true {
-		    padding: 0 25px 0 10px;
-		}
-	
-		.false {
-		    padding: 0 10px 0 25px;
-		}
-	}
-	
-	.knob {
-	    width: 18px;
-	    position: absolute;
-	    left: 45px;
-	    top: 0;
-		height: 20px;
-		width: 30px;
-	    padding: 0;
-	    z-index: 999;
-		cursor: pointer;
-		background: #FFFFFF; 
-		background: -moz-linear-gradient(top, #FFFFFF 0%, #C1C1C1 100%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#C1C1C1));
-	
-	    .border-radius; 
-	
-		&.ui-draggable-dragging,
-		&:active {
-			background: darken(#FFFFFF, 10%);
-			background: -moz-linear-gradient(top, darken(#FFFFFF, 10%) 0%, darken(#C1C1C1, 10%) 100%);
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,darken(#FFFFFF, 10%)), color-stop(100%,darken(#C1C1C1, 10%)));
-		}
-	}
-	
-	
-	&.switch-labels-outside {
-		height: 16px;
-		.border-radius(16px);
-		.knob {
-			height: 16px;
-			width: 20px;
-			.border-radius(16px)
-		}
-		
-		
-	}
+        .true
+        , .false 
+        {
+            display: inline-block;
+            padding: 0 10px;
+            text-align: center;
+            /*position: relative;*/
+            line-height: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            float: left;
+        }
+
+        .true {
+            padding: 0 25px 0 10px;
+        }
+
+        .false {
+            padding: 0 10px 0 25px;
+        }
+    }
+
+    .knob {
+        width: 18px;
+        position: absolute;
+        left: 45px;
+        top: 0;
+        height: 20px;
+        width: 30px;
+        padding: 0;
+        z-index: 999;
+        cursor: pointer;
+        background: #FFFFFF; 
+        background: -moz-linear-gradient(top, #FFFFFF 0%, #C1C1C1 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#C1C1C1));
+        background: -o-linear-gradient(top, #FFFFFF 0%, #C1C1C1 100%);
+
+        .border-radius; 
+
+        &.ui-draggable-dragging,
+        &:active {
+            background: darken(#FFFFFF, 10%);
+            background: -moz-linear-gradient(top, darken(#FFFFFF, 10%) 0%, darken(#C1C1C1, 10%) 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,darken(#FFFFFF, 10%)), color-stop(100%,darken(#C1C1C1, 10%)));
+            background: -o-linear-gradient(top, darken(#FFFFFF, 10%) 0%, darken(#C1C1C1, 10%) 100%);
+        }
+    }
+
+
+    &.switch-labels-outside {
+        height: 16px;
+        -webkit-box-shadow:none;
+        -moz-box-shadow:none;
+        box-shadow:none;
+
+        .border-radius(16px);
+        .knob {
+            height: 16px;
+            width: 20px;
+            .border-radius(16px)
+        }
+
+
+    }
 }
 .switch-label-true
 , .switch-label-false 
 {
-	cursor: pointer;
-	color: #ccc;
-	&.active 
-	{
-		color: #444;
-	}
+    cursor: pointer;
+    color: #ccc;
+    &.active 
+    {
+        color: #444;
+    }
 }
-
-/*
-#inside .super-switch-wrap { //test feature
-	background: -moz-linear-gradient(left, green 0%, green 50%, red 51%, red 100%);
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,green), color-stop(50%,green), color-stop(51%,red), color-stop(100%,red));
-}*/
