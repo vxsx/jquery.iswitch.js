@@ -48,4 +48,3 @@ TODO:
 * tweak animation with outside labels
 * rewrite all js, just too messy :D
 * disabled state (really don't want this)
-* need nice demo-page :)
